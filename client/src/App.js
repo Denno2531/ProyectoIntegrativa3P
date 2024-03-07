@@ -24,7 +24,7 @@ function App() {
         <Route path="/providers" element={<ProviderPage />} />
         <Route path="/users" element={<UserPage />} />
         <Route path="/sales" element={<SalesPage />} />
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/home" element={<Home />} />
         <Route path="/" element={<Login />} /> {/* Agrega esta línea para la ruta principal */}
       </Routes>
     </Router>

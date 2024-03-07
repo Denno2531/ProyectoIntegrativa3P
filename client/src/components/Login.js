@@ -13,6 +13,8 @@ function Login() {
     e.preventDefault();
 
     try {
+      // Imprimir los valores antes de realizar la solicitud
+      console.log('Valores enviados por POST:', { username, password });
       // Realiza la solicitud de inicio de sesión al backend
       const response = await axios.post('http://localhost:3001/login', {
         username,
@@ -29,7 +31,11 @@ function Login() {
       }
     } catch (error) {
       // Maneja los errores de inicio de sesión
-      console.error('Error de inicio de sesión:', error);
+      if (error.response.status === 401) {
+        console.error('Credenciales incorrectas');
+      } else {
+        console.error('Error de inicio de sesión:', error);
+      }
     }
   };
 
@@ -37,7 +43,7 @@ function Login() {
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-md-6 text-center mb-5">
-          <h2 className="heading-section">PROYECTO INTEGRATIVA</h2>
+          <h2 className="heading-section title">PROYECTO INTEGRATIVA</h2>
         </div>
       </div>
       <div className="row justify-content-center">
@@ -56,6 +62,7 @@ function Login() {
                   placeholder="Ingrese el usuario"
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  required
                 />
               </div>
               <div className="form-group">
@@ -67,6 +74,7 @@ function Login() {
                   placeholder="********"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  required
                 />
               </div>
               <button className="btn btn-light" type="submit">Ingresar</button>

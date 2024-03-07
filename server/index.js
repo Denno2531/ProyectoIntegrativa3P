@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const mysql = require("mysql");
 const cors = require("cors");
+const bcrypt = require('bcrypt');
 
 app.use(cors());
 app.use(express.json());
@@ -537,29 +538,25 @@ app.post("/createUsuarios", (req, res) => {
       }
     });
   });
-  
-  const validCredentials = async (username, password, connection) => {
-    try {
-      const [rows] = await connection.execute('SELECT * FROM usuarios WHERE username = ? AND password = ?', [username, password]);
-  
-      return rows.length > 0; // Devuelve true si se encuentra al menos un usuario con las credenciales proporcionadas
-    } catch (error) {
-      console.error('Error al verificar las credenciales:', error);
-      return false;
-    }
-  };
-    
 
-// Endpoint para manejar el inicio de sesión
-app.post('/login', (req, res) => {
-  const { username, password } = req.body;
+  /* -------------------------------------VALIDACION USUARIOS + LOGIN---------------------------------------- */  
 
-  // Verificar las credenciales utilizando la función validCredentials
-  if (validCredentials(username, password)) {
-    res.json({ success: true, message: 'Inicio de sesión exitoso' });
-  } else {
-    res.status(401).json({ success: false, message: 'Credenciales incorrectas' });
-  }
-});
+  app.post('/login', (req, res) => {
+    const { username, password } = req.body;
 
-  
+    db.query(
+      'SELECT * FROM usuarios WHERE username = ? AND password = ?', [username, password],
+      (err, result) => {
+        if (err) {
+          console.error('Error en la consulta:', err);
+          res.status(500).send("Error en las credenciales.");
+        } else {
+          if (result.length > 0) {
+            res.status(200).send("Acceso concedido!");
+          } else {
+            res.status(401).send("Credenciales incorrectas.");
+          }
+        }
+      }
+    );
+  });

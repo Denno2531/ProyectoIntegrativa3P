@@ -1,0 +1,46 @@
+/* Login.css */
+
+body {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  .img {
+    background-size: cover;
+    background-position: center center;
+    height: 100vh;
+  }
+  
+  .ftco-section {
+    padding: 7em 0;
+  }
+  
+  .login-wrap {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .login-wrap form {
+    text-align: left;
+  }
+  
+  .login-wrap label {
+    font-weight: bold;
+  }
+  
+  .login-wrap .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .login-wrap .btn {
+    width: 100%;
+    background-color: #f8f9fa; /* Bootstrap light color */
+    color: #495057;
+    font-weight: bold;
+  }
+  
+  .login-wrap .btn:hover {
+    background-color: #e2e6ea; /* Bootstrap secondary color on hover */
+  }
+  

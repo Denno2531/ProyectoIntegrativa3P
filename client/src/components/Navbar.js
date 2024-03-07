@@ -62,7 +62,11 @@ function Navbar() {
                 Ventas
               </Link>
             </li>
-            {/* Agrega más enlaces según sea necesario */}
+            <li className="nav-item">
+              <Link className="nav-link" to="/">
+                Cerrar Session
+              </Link>
+            </li>
           </ul>
         </div>
       </div>

@@ -2,6 +2,8 @@
 
 body {
     font-family: 'Lato', sans-serif;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 9%, rgba(0,212,255,1) 100%);
   }
   
   .img {
@@ -36,11 +38,15 @@ body {
   .login-wrap .btn {
     width: 100%;
     background-color: #f8f9fa; /* Bootstrap light color */
-    color: #495057;
+    color: #000000;
     font-weight: bold;
   }
   
   .login-wrap .btn:hover {
     background-color: #e2e6ea; /* Bootstrap secondary color on hover */
+  }
+
+  .title{
+    color: #0be19d;
   }
   
